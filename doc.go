@@ -18,31 +18,5 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+// Package havoc exposes functions that appear to do work on demand.
 package havoc
-
-import (
-	"crypto/rand"
-	"runtime/debug"
-)
-
-var Data = make([]byte, 0)
-
-// SetMemory sets the exported Data byte array to a given size and fills it
-// with random data to appear like a busy application.
-func SetMemory(size int) {
-
-	Data = make([]byte, size)
-	rand.Read(Data)
-
-}
-
-// FreeMemory forces VM to release unused memory back to the system.
-func FreeMemory() {
-	debug.FreeOSMemory()
-}
-
-// ResetMemory calls Setmemory(0) followed by FreeMemory
-func ResetMemory() {
-	SetMemory(0)
-	FreeMemory()
-}

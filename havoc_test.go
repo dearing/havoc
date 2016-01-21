@@ -23,18 +23,30 @@ package havoc
 import (
 	"fmt"
 	"runtime"
-	"runtime/debug"
 	"testing"
 )
 
 var m = runtime.MemStats{}
 
-// Note really all the useful yet :/
 func TestSetMemory(t *testing.T) {
+	SetMemory(1024)
+	if len(Data) != 1024 {
+		t.Error("Set memory failed to set Data.")
+	}
+}
+
+func TestResetMemory(t *testing.T) {
+	SetMemory(1024)
+	ResetMemory()
+	if len(Data) != 0 {
+		t.Error("Reset memory failed to clear Data.")
+	}
+}
+func TestSuite(t *testing.T) {
 	fmt.Printf("    [ len(Data) ], [ mem alloc ], [ mem sys ]\n")
 	for i := uint(1); i < 26; i++ {
 
-		debug.FreeOSMemory()
+		ResetMemory()
 
 		SetMemory(1 << i)
 		runtime.ReadMemStats(&m)
