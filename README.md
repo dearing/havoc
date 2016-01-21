@@ -4,34 +4,45 @@ HAVOC
 Bad library for making a bad application.
 
 ```
+go test -v -bench=.
+=== RUN   TestSetMemory
+--- PASS: TestSetMemory (0.00s)
+=== RUN   TestResetMemory
+--- PASS: TestResetMemory (0.00s)
+=== RUN   TestSuite
     [ len(Data) ], [ mem alloc ], [ mem sys ]
-[1^ 1]: Data=         2, ALLOC=    111584, SYS=   3639544
-[1^ 2]: Data=         4, ALLOC=    111664, SYS=   3639544
-[1^ 3]: Data=         8, ALLOC=    111664, SYS=   3639544
-[1^ 4]: Data=        16, ALLOC=    111664, SYS=   3639544
-[1^ 5]: Data=        32, ALLOC=    111680, SYS=   3639544
-[1^ 6]: Data=        64, ALLOC=    111728, SYS=   3639544
-[1^ 7]: Data=       128, ALLOC=    111824, SYS=   3639544
-[1^ 8]: Data=       256, ALLOC=    112016, SYS=   3639544
-[1^ 9]: Data=       512, ALLOC=    112400, SYS=   3639544
-[1^10]: Data=      1024, ALLOC=    113168, SYS=   3639544
-[1^11]: Data=      2048, ALLOC=    114704, SYS=   3639544
-[1^12]: Data=      4096, ALLOC=    117776, SYS=   3639544
-[1^13]: Data=      8192, ALLOC=    123920, SYS=   3639544
-[1^14]: Data=     16384, ALLOC=    136208, SYS=   3639544
-[1^15]: Data=     32768, ALLOC=    160784, SYS=   3639544
-[1^16]: Data=     65536, ALLOC=    209936, SYS=   3639544
-[1^17]: Data=    131072, ALLOC=    308240, SYS=   3639544
-[1^18]: Data=    262144, ALLOC=    504848, SYS=   4720888
-[1^19]: Data=    524288, ALLOC=    898064, SYS=   4720888
-[1^20]: Data=   1048576, ALLOC=   1684496, SYS=   5802232
-[1^21]: Data=   2097152, ALLOC=   3257360, SYS=   7969016
-[1^22]: Data=   4194304, ALLOC=   4309840, SYS=  12298488
-[1^23]: Data=   8388608, ALLOC=   8504208, SYS=  20957432
-[1^24]: Data=  16777216, ALLOC=  16892816, SYS=  38275320
-[1^25]: Data=  33554432, ALLOC=  33674312, SYS=  72911096
+[1^ 1]: Data=         2, ALLOC=    113792, SYS=   3639544
+[1^ 2]: Data=         4, ALLOC=    113856, SYS=   3639544
+[1^ 3]: Data=         8, ALLOC=    113856, SYS=   3639544
+[1^ 4]: Data=        16, ALLOC=    113856, SYS=   3639544
+[1^ 5]: Data=        32, ALLOC=    113872, SYS=   3639544
+[1^ 6]: Data=        64, ALLOC=    113904, SYS=   3639544
+[1^ 7]: Data=       128, ALLOC=    113968, SYS=   3639544
+[1^ 8]: Data=       256, ALLOC=    114096, SYS=   3639544
+[1^ 9]: Data=       512, ALLOC=    114352, SYS=   3639544
+[1^10]: Data=      1024, ALLOC=    114864, SYS=   3639544
+[1^11]: Data=      2048, ALLOC=    115888, SYS=   3639544
+[1^12]: Data=      4096, ALLOC=    117936, SYS=   3639544
+[1^13]: Data=      8192, ALLOC=    122032, SYS=   3639544
+[1^14]: Data=     16384, ALLOC=    130224, SYS=   3639544
+[1^15]: Data=     32768, ALLOC=    146608, SYS=   3639544
+[1^16]: Data=     65536, ALLOC=    179376, SYS=   3639544
+[1^17]: Data=    131072, ALLOC=    244912, SYS=   3639544
+[1^18]: Data=    262144, ALLOC=    375984, SYS=   3639544
+[1^19]: Data=    524288, ALLOC=    638128, SYS=   4720888
+[1^20]: Data=   1048576, ALLOC=   1162416, SYS=   4720888
+[1^21]: Data=   2097152, ALLOC=   2210992, SYS=   6883576
+[1^22]: Data=   4194304, ALLOC=   4312048, SYS=  11213048
+[1^23]: Data=   8388608, ALLOC=   8506352, SYS=  19871992
+[1^24]: Data=  16777216, ALLOC=  16895024, SYS=  37189880
+[1^25]: Data=  33554432, ALLOC=  33676520, SYS=  71825656
+--- PASS: TestSuite (5.41s)
 PASS
-ok  	github.com/dearing/havoc	5.311s
+BenchmarkMem-4	
+
+
+   10000	    586819 ns/op
+ok  	github.com/dearing/havoc	11.282s
 
 ```
 
