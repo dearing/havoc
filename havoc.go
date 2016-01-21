@@ -27,16 +27,12 @@ import (
 
 var Data = make([]byte, 0)
 
-// SetMemory sets the exported Data byte array to a given size and fills it
-// with random data to appear like a busy application.
+// SetMemory sets the exported Data byte array to a given size
 func SetMemory(size int) {
-
 	Data = make([]byte, size)
-	rand.Read(Data)
-
 }
 
-// FreeMemory forces VM to release unused memory back to the system.
+// FreeMemory forces VM to release unused memory back to the system
 func FreeMemory() {
 	debug.FreeOSMemory()
 }
@@ -45,4 +41,9 @@ func FreeMemory() {
 func ResetMemory() {
 	SetMemory(0)
 	FreeMemory()
+}
+
+// FillData will fill the current Data array with random data
+func FillData() {
+	rand.Read(Data)
 }

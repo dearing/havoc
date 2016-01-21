@@ -43,14 +43,13 @@ func TestResetMemory(t *testing.T) {
 	}
 }
 func TestSuite(t *testing.T) {
-	fmt.Printf("    [ len(Data) ], [ mem alloc ], [ mem sys ]\n")
 	for i := uint(1); i < 26; i++ {
 
 		ResetMemory()
-
 		SetMemory(1 << i)
+		FillData()
 		runtime.ReadMemStats(&m)
-		fmt.Printf("[1^%2d]: Data=%10d, ALLOC=%10d, SYS=%10d\n", i, 1<<i, m.Alloc, m.Sys)
+		fmt.Printf("\t[2^%02d]: Data=%010d, ALLOC=%010d, SYS=%010d\n", i, 1<<i, m.Alloc, m.Sys)
 
 	}
 }
@@ -58,9 +57,9 @@ func TestSuite(t *testing.T) {
 func BenchmarkMem(b *testing.B) {
 
 	for i := 0; i < b.N; i++ {
+		ResetMemory()
 		SetMemory(b.N)
-		runtime.ReadMemStats(&m)
-		//fmt.Print("\r", b.N, m.HeapAlloc, m.HeapInuse, m.HeapSys, m.HeapIdle, m.Sys)
+		FillData()
 	}
 	println()
 }
