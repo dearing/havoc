@@ -27,6 +27,7 @@ import (
 var Data = make([]byte, 0)
 
 func SetMemory(size int) {
+
 	Data = make([]byte, size)
 
 	rand.Read(Data)

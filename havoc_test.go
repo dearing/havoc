@@ -20,14 +20,32 @@
 
 package havoc
 
-import "testing"
+import (
+	"fmt"
+	"runtime"
+	"testing"
+)
 
-var tests = map[string]int{
-	"FIZZ":     3,
-	"BUZZ":     5,
-	"FIZZBUZZ": 15,
+var m = runtime.MemStats{}
+
+// 1GB
+func TestSetMemory(t *testing.T) {
+	fmt.Printf("    [ len(Data) ], [ mem alloc ], [ mem sys ]\n")
+	for i := uint(1); i < 26; i++ {
+
+		SetMemory(1 << i)
+		runtime.ReadMemStats(&m)
+		fmt.Printf("[1^%2d]: Data=%10d, ALLOC=%10d, SYS=%10d\n", i, 1<<i, m.Alloc, m.Sys)
+
+	}
 }
 
-func TestSetMemory1G(t *testing.T) {
-	SetMemory(1 * 1024 * 1024)
+func BenchmarkMem(b *testing.B) {
+
+	for i := 0; i < b.N; i++ {
+		SetMemory(b.N)
+		runtime.ReadMemStats(&m)
+		fmt.Print("\r", b.N, m.HeapAlloc, m.HeapInuse, m.HeapSys, m.HeapIdle, m.Sys)
+	}
+	println()
 }
