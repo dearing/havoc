@@ -23,15 +23,18 @@ package havoc
 import (
 	"fmt"
 	"runtime"
+	"runtime/debug"
 	"testing"
 )
 
 var m = runtime.MemStats{}
 
-// 1GB
+// Note really all the useful yet :/
 func TestSetMemory(t *testing.T) {
 	fmt.Printf("    [ len(Data) ], [ mem alloc ], [ mem sys ]\n")
 	for i := uint(1); i < 26; i++ {
+
+		debug.FreeOSMemory()
 
 		SetMemory(1 << i)
 		runtime.ReadMemStats(&m)
@@ -45,7 +48,7 @@ func BenchmarkMem(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		SetMemory(b.N)
 		runtime.ReadMemStats(&m)
-		fmt.Print("\r", b.N, m.HeapAlloc, m.HeapInuse, m.HeapSys, m.HeapIdle, m.Sys)
+		//fmt.Print("\r", b.N, m.HeapAlloc, m.HeapInuse, m.HeapSys, m.HeapIdle, m.Sys)
 	}
 	println()
 }
