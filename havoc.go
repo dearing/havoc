@@ -47,3 +47,9 @@ func ResetMemory() {
 func FillData() {
 	rand.Read(Data)
 }
+
+func Forever() {
+	for {
+
+	}
+}
