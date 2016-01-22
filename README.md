@@ -1,6 +1,8 @@
 HAVOC
 ============
 
+[![forthebadge](http://forthebadge.com/images/badges/just-plain-nasty.svg)](http://forthebadge.com)
+
 Bad library for making a bad application.
 
 ```
