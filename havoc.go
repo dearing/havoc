@@ -48,6 +48,7 @@ func FillData() {
 	rand.Read(Data)
 }
 
+// Forever runs forever.
 func Forever() {
 	for {
 
