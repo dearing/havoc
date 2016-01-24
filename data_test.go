@@ -82,14 +82,14 @@ func TestDataFillCrypto(t *testing.T) {
 
 }
 
-func TestResetData(t *testing.T) {
+func TestDataReset(t *testing.T) {
 
 	DataSet(size)
 	DataFillCrypto()
 
 	runtime.ReadMemStats(&m)
 	old := m.HeapAlloc
-	ResetData()
+	DataReset()
 
 	if len(Data) != 0 {
 		t.Error("Reset memory failed to clear Data.")
@@ -104,7 +104,7 @@ func TestResetData(t *testing.T) {
 
 func TestSuite(t *testing.T) {
 	for i := uint(1); i < 21; i++ {
-		ResetData()
+		DataReset()
 		DataSet(1 << i)
 		DataFillCrypto()
 		runtime.ReadMemStats(&m)
@@ -115,7 +115,7 @@ func TestSuite(t *testing.T) {
 func BenchmarkFillData(b *testing.B) {
 
 	for i := 0; i < b.N; i++ {
-		ResetData()
+		DataReset()
 		DataSet(b.N)
 		DataFill()
 	}
@@ -124,7 +124,7 @@ func BenchmarkFillData(b *testing.B) {
 func BenchmarkZeroFillData(b *testing.B) {
 
 	for i := 0; i < b.N; i++ {
-		ResetData()
+		DataReset()
 		DataSet(b.N)
 		DataFillZero()
 	}
@@ -133,7 +133,7 @@ func BenchmarkZeroFillData(b *testing.B) {
 func BenchmarkCryptoFillData(b *testing.B) {
 
 	for i := 0; i < b.N; i++ {
-		ResetData()
+		DataReset()
 		DataSet(b.N)
 		DataFillCrypto()
 	}

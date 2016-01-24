@@ -31,8 +31,8 @@ func DataSet(size int) {
 	Data = make([]byte, size)
 }
 
-// ResetData calls DataSet(0) followed by FreeMemory
-func ResetData() {
+// DataReset calls DataSet(0) followed by FreeMemory
+func DataReset() {
 	DataSet(0)
 	FreeMemory()
 }
