@@ -81,12 +81,12 @@ func TestDataReset(t *testing.T) {
 }
 
 func TestSuite(t *testing.T) {
-	for i := uint(1); i < 21; i++ {
+	for i := uint(1); i < 31; i++ {
 		DataReset()
 		DataSet(1 << i)
-		DataFillCrypto()
+		DataFill()
 		runtime.ReadMemStats(&m)
-		fmt.Printf("\t[2^%02d]: Data=%010d,  ALLOC=%010d,  SYS=%010d\n", i, len(Data), m.Alloc, m.Sys)
+		fmt.Printf(" - [2^%02d]: Data=%010d,  ALLOC=%010d,  SYS=%010d\n", i, len(Data), m.Alloc, m.Sys)
 	}
 }
 
