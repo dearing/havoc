@@ -21,31 +21,12 @@
 package havoc
 
 import (
-	"crypto/rand"
 	"runtime/debug"
 )
-
-var Data = make([]byte, 0)
-
-// SetMemory sets the exported Data byte array to a given size
-func SetMemory(size int) {
-	Data = make([]byte, size)
-}
 
 // FreeMemory forces VM to release unused memory back to the system
 func FreeMemory() {
 	debug.FreeOSMemory()
-}
-
-// ResetMemory calls Setmemory(0) followed by FreeMemory
-func ResetMemory() {
-	SetMemory(0)
-	FreeMemory()
-}
-
-// FillData will fill the current Data array with random data
-func FillData() {
-	rand.Read(Data)
 }
 
 // Forever runs forever.

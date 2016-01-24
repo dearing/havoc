@@ -21,54 +21,37 @@
 package havoc
 
 import (
-	"fmt"
-	"runtime"
-	"testing"
+	"crypto/rand"
 )
 
-var m = runtime.MemStats{}
+var Data = make([]byte, 0)
 
-func TestSetMemory(t *testing.T) {
-	SetMemory(1024)
-	if len(Data) != 1024 {
-		t.Error("Set memory failed to set Data.")
+// SetMemory sets the exported Data byte array to a given size
+func DataSet(size int) {
+	Data = make([]byte, size)
+}
+
+// ResetData calls DataSet(0) followed by FreeMemory
+func ResetData() {
+	DataSet(0)
+	FreeMemory()
+}
+
+// DataFill will fill the current Data array with ones
+func DataFill() {
+	for i := 0; i < len(Data); i++ {
+		Data[i] = 1
 	}
 }
 
-func TestResetMemory(t *testing.T) {
-	SetMemory(1024 * 1024)
-	runtime.ReadMemStats(&m)
-	old := m.HeapAlloc
-	ResetMemory()
-
-	if len(Data) != 0 {
-		t.Error("Reset memory failed to clear Data.")
-	}
-
-	runtime.ReadMemStats(&m)
-	if m.HeapAlloc >= old {
-		t.Errorf("Reset memory failed release memory! %d >= %d\n", m.HeapAlloc, old)
-	}
-
-}
-func TestSuite(t *testing.T) {
-	for i := uint(1); i < 21; i++ {
-
-		ResetMemory()
-		SetMemory(1 << i)
-		FillData()
-		runtime.ReadMemStats(&m)
-		fmt.Printf("\t[2^%02d]: Data=%010d,  ALLOC=%010d,  SYS=%010d\n", i, len(Data), m.Alloc, m.Sys)
-		//fmt.Printf("\t[2^%02d]: Data=%010d, HALLOC=%010d, HREL=%010d\n", i, len(Data), m.HeapAlloc, m.HeapReleased)
+// DataFillZero will fill the current Data array with zeros
+func DataFillZero() {
+	for i := 0; i < len(Data); i++ {
+		Data[i] = 0
 	}
 }
 
-func BenchmarkMem(b *testing.B) {
-
-	for i := 0; i < b.N; i++ {
-		ResetMemory()
-		SetMemory(b.N)
-		FillData()
-	}
-	println()
+// DataFillCrypto will fill the current Data array with random data
+func DataFillCrypto() {
+	rand.Read(Data)
 }
