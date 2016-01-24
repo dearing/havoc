@@ -26,7 +26,7 @@ import (
 
 var Data = make([]byte, 0)
 
-// SetMemory sets the exported Data byte array to a given size
+// DataSet sets the exported Data byte array to a given size
 func DataSet(size int) {
 	Data = make([]byte, size)
 }
