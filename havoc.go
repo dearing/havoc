@@ -30,6 +30,7 @@ func FreeMemory() {
 }
 
 // Forever runs forever.
+// TODO: too intensive
 func Forever() {
 	for {
 		// evah
