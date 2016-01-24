@@ -99,15 +99,6 @@ func BenchmarkFillData(b *testing.B) {
 	}
 }
 
-func BenchmarkZeroFillData(b *testing.B) {
-
-	for i := 0; i < b.N; i++ {
-		DataReset()
-		DataSet(b.N)
-		DataFillZero()
-	}
-}
-
 func BenchmarkCryptoFillData(b *testing.B) {
 
 	for i := 0; i < b.N; i++ {
