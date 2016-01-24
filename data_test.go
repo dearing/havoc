@@ -32,6 +32,7 @@ var size = 1024
 func TestDataSet(t *testing.T) {
 
 	DataSet(size)
+
 	if len(Data) != size {
 		t.Error("Set memory failed to set Data.")
 	}
@@ -40,9 +41,6 @@ func TestDataSet(t *testing.T) {
 func TestDataFill(t *testing.T) {
 
 	DataSet(size)
-	if len(Data) != size {
-		t.Error("Reset memory failed to clear Data.")
-	}
 
 	DataFill()
 	for _, v := range Data {
@@ -57,9 +55,6 @@ func TestDataFill(t *testing.T) {
 func TestDataFillZero(t *testing.T) {
 
 	DataSet(size)
-	if len(Data) != size {
-		t.Error("Reset memory failed to clear Data.")
-	}
 
 	DataFillZero()
 	for _, v := range Data {
@@ -74,9 +69,6 @@ func TestDataFillZero(t *testing.T) {
 func TestDataFillCrypto(t *testing.T) {
 
 	DataSet(size)
-	if len(Data) != size {
-		t.Error("Reset memory failed to clear Data.")
-	}
 
 	DataFillCrypto()
 
