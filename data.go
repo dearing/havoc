@@ -44,13 +44,6 @@ func DataFill() {
 	}
 }
 
-// DataFillZero will fill the current Data array with zeros
-func DataFillZero() {
-	for i := 0; i < len(Data); i++ {
-		Data[i] = 0
-	}
-}
-
 // DataFillCrypto will fill the current Data array with random data
 func DataFillCrypto() {
 	rand.Read(Data)

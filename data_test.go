@@ -52,20 +52,6 @@ func TestDataFill(t *testing.T) {
 
 }
 
-func TestDataFillZero(t *testing.T) {
-
-	DataSet(size)
-
-	DataFillZero()
-	for _, v := range Data {
-		if v != 0 {
-			t.Errorf("DATA was not zeroed.")
-			return
-		}
-	}
-
-}
-
 func TestDataFillCrypto(t *testing.T) {
 
 	DataSet(size)
