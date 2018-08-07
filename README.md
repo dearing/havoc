@@ -3,8 +3,6 @@ HAVOC
 
 [![forthebadge](http://forthebadge.com/images/badges/just-plain-nasty.svg)](http://forthebadge.com)
 
-[![Build Status](https://drone.dearing.tech/api/badges/dearing/havoc/status.svg)](https://drone.dearing.tech/dearing/havoc)
-
 Bad library for making a bad application.
 
 - see [havoc_server] for the webserver!
